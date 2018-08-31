@@ -46,13 +46,6 @@ client.on('end', () => {
 
 const avatars = [
   './assets/ts-alert-shine.svg', // Alipay
-  'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png', // Angular
-  'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png', // Ant Design
-  'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png', // Ant Design Pro
-  'https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png', // Bootstrap
-  'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png', // React
-  'https://gw.alipayobjects.com/zos/rmsportal/ComBAopevLwENQdKWiIn.png', // Vue
-  'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png', // Webpack
 ];
 
 const avatars2 = [
@@ -81,9 +74,7 @@ app.get('/api/notices', function (req, res) {
       title: '你收到了 14 份新周报',
       datetime: '2017-08-09',
       type: '通知',
-    },
-
-    {
+    },{
       id: '000000012',
       title: 'ABCD 版本发布',
       description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
@@ -151,8 +142,8 @@ app.get('/api/project/orderList', (req, res) => {
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
   res.header("X-Powered-By", ' 3.2.1')
   res.header("Content-Type", "application/json;charset=utf-8");
-  let r = []
 
+  let r = []
   client.zrevrange('dishStatistics810177203', 0, 5,(err, data) => {
     if (err) console.log(err)
     for (let i = 0; i < data.length; i++) {
@@ -203,11 +194,8 @@ app.get('/api/video', (req, res) => {
   let fileSize = stat.size;
   let range = req.headers.range;
 
-  // fileSize 3332038
-
   if (range) {
     //有range头才使用206状态码
-
     let parts = range.replace(/bytes=/, "").split("-");
     let start = parseInt(parts[0], 10);
     let end = parts[1] ? parseInt(parts[1], 10) : start + 999999;
@@ -236,9 +224,7 @@ app.get('/api/video', (req, res) => {
     res.writeHead(200, head);
     fs.createReadStream(path).pipe(res);
   }
-
 })
-
 
 app.get('/api/activities', (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -359,7 +345,7 @@ app.get('/api/currentUser', (req, res) => {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
-    notifyCount: 12,
+    notifyCount: 2,
   })
 })
 
@@ -369,19 +355,12 @@ app.get('/api/users', (req, res) => {
       name: 'John Brown',
       age: 32,
       address: 'New York No. 1 Lake Park',
-    },
-    {
+    },{
       key: '2',
       name: 'Jim Green',
       age: 42,
       address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
+    }
   ])
 })
 
@@ -392,9 +371,7 @@ app.get('/api/rule', (req, res) => {
   }
 
   const params = parse(url, true).query;
-
   let dataSource = [...tableListDataSource];
-
   if (params.sorter) {
     const s = params.sorter.split('_');
     dataSource = dataSource.sort((prev, next) => {
@@ -508,11 +485,8 @@ app.get('/api/fake_list', (req, res) => {
   }
 
   const params = parse(url, true).query;
-
   const count = params.count * 1 || 20;
-
   const result = fakeList(count);
-
   if (res && res.json) {
     res.json(result);
   } else {
@@ -564,20 +538,16 @@ app.get('/api/fake_chart_data', (req, res) => {
     }, {
       x: '广州粤菜',
       y: 3321,
-    },
-    {
+    },{
       x: '川菜',
       y: 3113,
-    },
-    {
+    },{
       x: '鲁菜',
       y: 2341,
-    },
-    {
+    },{
       x: '皖南菜系',
       y: 1231,
-    },
-    {
+    },{
       x: '其他',
       y: 1231,
     },
@@ -586,24 +556,19 @@ app.get('/api/fake_chart_data', (req, res) => {
   const salesTypeDataOnline = [{
       x: '顺德菜',
       y: 244,
-    },
-    {
+    },{
       x: '广州粤菜',
       y: 321,
-    },
-    {
+    },{
       x: '川菜',
       y: 311,
-    },
-    {
+    },{
       x: '鲁菜',
       y: 41,
-    },
-    {
+    },{
       x: '皖南菜系',
       y: 121,
-    },
-    {
+    },{
       x: '其他',
       y: 111,
     },
@@ -612,20 +577,16 @@ app.get('/api/fake_chart_data', (req, res) => {
   const salesTypeDataOffline = [{
       x: '顺德菜',
       y: 99,
-    },
-    {
+    },{
       x: '广州粤菜',
       y: 188,
-    },
-    {
+    },{
       x: '川菜',
       y: 344,
-    },
-    {
+    },{
       x: '鲁菜',
       y: 255,
-    },
-    {
+    },{
       x: '其他',
       y: 65,
     },
@@ -654,16 +615,14 @@ app.get('/api/fake_chart_data', (req, res) => {
       output: 4,
       contribute: 5,
       hot: 7,
-    },
-    {
+    },{
       name: '团队',
       ref: 3,
       koubei: 9,
       output: 6,
       contribute: 3,
       hot: 1,
-    },
-    {
+    },{
       name: '部门',
       ref: 4,
       koubei: 1,
